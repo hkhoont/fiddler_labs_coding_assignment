@@ -40,14 +40,14 @@ Brainstorming on the Algorithm
 11) Evaluation - Priority: results--> optimization of code Space?,Speed?  *(next version)*
 
 Functions map
-function - Verify if the postfix relation is correct (A1 A2 A3 +) such statement would be raise flag  *(not considered, this is problem in itself)*
-function - Convert Postfix to Infix. May be needed  *(no need, computed postfix)*
-function - Calculate value from Postfix or Infix  *(no need, computed postfix)*
-Class - vertex  *(no need, used adj list)*
-Class - graph or simply store it in the dictionary  *(no need, used adj list)*
-function - criteria for judging the next node to compute  *(done)*
-function - Traveling in the graph  *(done)*
-function - reading the input  *(done)*
-function - output print  *(done)*
-main function  *(done)*
+    - function - Verify if the postfix relation is correct (A1 A2 A3 +) such statement would be raise flag  *(not considered, this is problem in itself)*
+    - function - Convert Postfix to Infix. May be needed  *(no need, computed postfix)*
+    - function - Calculate value from Postfix or Infix  *(no need, computed postfix)*
+    - Class - vertex  *(no need, used adj list)*
+    - Class - graph or simply store it in the dictionary  *(no need, used adj list)*
+    - function - criteria for judging the next node to compute  *(done)*
+    - function - Traveling in the graph  *(done)*
+    - function - reading the input  *(done)*
+    - function - output print  *(done)*
+    - main function  *(done)*
 
