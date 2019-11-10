@@ -50,17 +50,35 @@ data = sys.stdin.read().splitlines()
 operations = ['+','-','*','/']
 
 def check_empty(cell):
+	"""
+	Function to detect any missing operand after tokenizing
+
+	input: Tokenised the content of the cell - type: list of strings
+	output: True is any operand is None - type: Boolean
+	"""
 	for k in cell:
 		if k=='':
 			return True
 	return False
 
 def check_self_join(cell,i,j):
+	"""
+	Function to detect self referencing
+
+	input: a token (may be a cell reference,int or operator) - type: str
+	output: True - type: Boolean
+	"""
 	for c in cell:
 		if c==(abcd[i]+str(j)):
 			return True
 
 def dtype_function(element):
+	"""
+	Function to detect type of token
+
+	input: a token (may be a cell reference,int or operator) - type: str
+	output: type: string
+	"""
 	if element[0] in abcd:
 		return 'reference'
 	elif element in operations:
@@ -73,6 +91,12 @@ def dtype_function(element):
 			print('Input Wrong')
 			return '-1'
 def check_all_true(compound_index):
+	"""
+	Function checks if all the cell dependencies are calculated 
+	If done the cell is added to queue and poped out of the opp_dict
+
+	input: compound_index - type: str
+	"""
 	global queue
 	global opp_dict
 	tf = opp_dict[compound_index].values()
@@ -81,12 +105,24 @@ def check_all_true(compound_index):
 		opp_dict.pop(compound_index)
 
 def toggle_tf_in_opp_dict5(compound_index,next_computation):
+	"""
+	Function to keep track for all the cell dependencies
+	Also their keep status of dependencies computation to float 
+
+	input: compound_index,list of cell - type: str,list of cell referencies
+	"""
 	global opp_dict
 	for element5 in next_computation:
 		opp_dict[element5][compound_index] = True
 		check_all_true(element5)
 
 def evaluate4(compound_index):
+	"""
+	Function computes postfix formual to integer. Saves it in new spreadsheet:excel
+	Also initiate the updation of the status by calling toggle_tf_in_opp_dict5
+	
+	input: compound_index - type: str
+	"""
 	global excel
 	global right_dict
 	global opp_dict
@@ -150,7 +186,10 @@ col = int(size[0])
 row = int(size[1])
 print(col,row)
 
+#dictionary for storing directed graph, format: keys: cells, values: dict with dependencies
 right_dict={}
+
+#dictionary for storing opposite directed graph, format: keys: cells, values: list of cells having input as key
 opp_dict={}
 queue=[]
 
@@ -174,7 +213,6 @@ for i in range(row):
 		compound_index = abcd[i]+str(j)
 		cell = re.split(r'\s{1,}', data_2d[i][j])
 		#cell = data_2d[i][j].split(' ')
-
 
 		flag = check_empty(cell)
 		if flag==True:
@@ -229,8 +267,6 @@ for i in range(row):
 
 			if flag==0:
 				queue.append(compound_index)
-
-
 
 # print(excel)
 while queue:
